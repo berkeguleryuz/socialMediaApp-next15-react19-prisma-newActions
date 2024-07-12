@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Comments from "./Comments";
 
 const Post = () => {
   return (
@@ -48,14 +49,53 @@ const Post = () => {
         </p>
       </div>
       {/* INTERACTION */}
-      <div className="flex items-center justify-between text-sm">
+      <div className="flex items-center justify-between text-sm my-4">
         <div className="flex gap-8">
-          <div className="flex items-center gap-4 bg-slate-100 p-2 rounded-xl">
-            <Image src={"/like.png"} alt="" width={16} height={16} />
+          <div className="flex items-center gap-4 bg-slate-50 p-2 rounded-xl">
+            <Image
+              src={"/like.png"}
+              alt=""
+              width={16}
+              height={16}
+              className="cursor-pointer"
+            />
+            <span className="texy-gray-300">|</span>
+            <span className="texy-gray-500">
+              621 <span className="hidden md:inline">Likes</span>
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 bg-slate-50 p-2 rounded-xl">
+            <Image
+              src={"/comment.png"}
+              alt=""
+              width={16}
+              height={16}
+              className="cursor-pointer"
+            />
+            <span className="texy-gray-300">|</span>
+            <span className="texy-gray-500">
+              621 <span className="hidden md:inline">Comments</span>
+            </span>
           </div>
         </div>
-        <div className=""></div>
+        <div className="">
+          <div className="flex items-center gap-4 bg-slate-50 p-2 rounded-xl">
+            <Image
+              src={"/share.png"}
+              alt=""
+              width={16}
+              height={16}
+              className="cursor-pointer"
+            />
+            <span className="texy-gray-300">|</span>
+            <span className="texy-gray-500">
+              123 <span className="hidden md:inline">Shares</span>
+            </span>
+          </div>
+        </div>
       </div>
+      <Comments />
     </div>
   );
 };

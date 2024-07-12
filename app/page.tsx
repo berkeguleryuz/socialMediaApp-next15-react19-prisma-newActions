@@ -6,7 +6,7 @@ import Stories from "../components/Stories";
 
 const Homepage = () => {
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 pt-6">
       {/* LEFT */}
       <div className="hidden xl:block w-[20%]">
         <LeftMenu />
@@ -20,7 +20,7 @@ const Homepage = () => {
         </div>
       </div>
       {/* RIGHT */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:block w-[30%] xl:w-[50%]">
         <RightMenu />
       </div>
     </div>
