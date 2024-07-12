@@ -12,7 +12,7 @@ const Homepage = () => {
         <LeftMenu />
       </div>
       {/* CENTER */}
-      <div className="w-full lg:w-[70%] xl:[50%]">
+      <div className="w-full lg:w-[50%] xl:[50%]">
         <div className="flex flex-col gap-6">
           <Stories />
           <AddPost />
