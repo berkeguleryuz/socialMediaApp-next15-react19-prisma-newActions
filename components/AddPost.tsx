@@ -3,7 +3,7 @@ import React from "react";
 
 const AddPost = () => {
   return (
-    <div className="p-4 bg-white rounded-lg flex gap-4 justify-between text-sm">
+    <div className="p-4 shadow-md bg-white rounded-lg flex gap-4 justify-between text-sm">
       {/* AVATAR */}
       <Image
         src={
@@ -31,7 +31,48 @@ const AddPost = () => {
           />
         </div>
         {/* Post options */}
-        <div className=""></div>
+        <div className="flex items-center gap-4 mt-4 text-gray-400 flex-wrap">
+          <div className="flex items-center gap-2 cursor-pointer">
+            <Image
+              src={"/addimage.png"}
+              alt="logo"
+              width={25}
+              height={25}
+              className="h-5 w-5 cursor-pointer self-end"
+            />
+            Photo
+          </div>
+          <div className="flex items-center gap-2 cursor-pointer">
+            <Image
+              src={"/addVideo.png"}
+              alt="image"
+              width={25}
+              height={25}
+              className="h-5 w-5 cursor-pointer self-end"
+            />
+            Video
+          </div>
+          <div className="flex items-center gap-2 cursor-pointer">
+            <Image
+              src={"/addevent.png"}
+              alt="video"
+              width={25}
+              height={25}
+              className="h-5 w-5 cursor-pointer self-end"
+            />
+            Event
+          </div>
+          <div className="flex items-center gap-2 cursor-pointer">
+            <Image
+              src={"/poll.png"}
+              alt="logo"
+              width={25}
+              height={25}
+              className="h-5 w-5 cursor-pointer self-end"
+            />
+            Photo
+          </div>
+        </div>
       </div>
     </div>
   );
