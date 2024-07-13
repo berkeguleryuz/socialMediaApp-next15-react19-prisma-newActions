@@ -19,7 +19,7 @@ const Ads = ({ size }: { size: "sm" | "md" | "lg" }) => {
             }
             fill
             className="rounded-lg object-cover"
-            alt=""
+            alt="image"
           />
         </div>
       </div>
