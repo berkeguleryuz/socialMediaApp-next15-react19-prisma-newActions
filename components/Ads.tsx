@@ -7,7 +7,7 @@ const Ads = ({ size }: { size: "sm" | "md" | "lg" }) => {
       {/* top */}
       <div className="flex items-center justify-between text-gray-500 font-medium">
         <span className="">Sponsored Ads</span>
-        <Image src={"/more.png"} width={16} height={16} alt="" />
+        <Image src={"/more.png"} width={16} height={16} alt="image" />
       </div>
       {/* bottom */}
       <div
