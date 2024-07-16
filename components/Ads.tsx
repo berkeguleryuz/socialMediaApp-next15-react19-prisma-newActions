@@ -37,6 +37,16 @@ const Ads = ({ size }: { size: "sm" | "md" | "lg" }) => {
           />
           <span className="text-blue-500 font-medium">Cool Lounge</span>
         </div>
+        <p className={size === "sm" ? "text-xs" : "text-sm"}>
+          {size === "sm"
+            ? "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque aut, fugiat voluptatem eos tenetur in unde doloribus! Quisquam, expedita voluptatum."
+            : size === "md"
+            ? "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim consectetur nulla sint aliquid. Possimus deserunt soluta molestias accusantium eveniet reprehenderit hic dolorem quidem sequi eum inventore id enim corporis reiciendis animi, nesciunt ipsam incidunt labore. Eaque."
+            : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum culpa architecto officia qui illum illo ex. Eligendi mollitia voluptatibus consequatur rem iusto minima exercitationem ullam perferendis cum aliquam itaque iure, at quam asperiores quae fuga amet tenetur quis ab ducimus officiis repellendus est deserunt similique? Inventore perferendis possimus excepturi non distinctio eveniet qui !"}
+        </p>
+        <button className="bg-gray-200 text-gray-600 p-2 text-xs rounded-lg">
+          Learn More
+        </button>
       </div>
     </div>
   );
