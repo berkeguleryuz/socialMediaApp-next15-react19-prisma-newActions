@@ -52,3 +52,13 @@ export const switchFollow = async (userId: string) => {
     throw new Error("Something went wrong");
   }
 };
+
+export const switchBlock = async (userId: string) => {
+  const { userId: currentUserId } = auth();
+
+  try {
+  } catch (err) {
+    console.log(err);
+    throw new Error("Something went wrong");
+  }
+};
