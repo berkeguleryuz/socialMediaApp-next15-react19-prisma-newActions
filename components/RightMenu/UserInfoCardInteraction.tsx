@@ -1,10 +1,8 @@
 "use client";
 import { switchBlock, switchFollow } from "@/lib/actions";
-import { auth } from "@clerk/nextjs/server";
 import React, { useOptimistic, useState } from "react";
 
 interface UserInfoCardInteractionProps {
-  currentUserId: string;
   userId: string;
   isUserBlocked: boolean;
   isFollowing: boolean;
@@ -12,7 +10,6 @@ interface UserInfoCardInteractionProps {
 }
 
 const UserInfoCardInteraction = ({
-  currentUserId,
   userId,
   isUserBlocked,
   isFollowing,
