@@ -1,5 +1,5 @@
 "use client";
-import { switchFollow } from "@/lib/actions";
+import { switchBlock, switchFollow } from "@/lib/actions";
 import { auth } from "@clerk/nextjs/server";
 import React, { useOptimistic, useState } from "react";
 
@@ -25,7 +25,7 @@ const UserInfoCardInteraction = ({
   });
 
   const follow = async () => {
-    switchOptimisticFollow("");
+    switchOptimisticState("follow");
     try {
       await switchFollow(userId);
       setUserState((prev) => ({
@@ -39,36 +39,54 @@ const UserInfoCardInteraction = ({
     } catch (err) {}
   };
 
-  const [optimisticFollow, switchOptimisticFollow] = useOptimistic(
+  const block = async () => {
+    switchOptimisticState("block");
+    try {
+      await switchBlock(userId);
+      setUserState((prev) => ({
+        ...prev,
+        blocked: !prev.blocked,
+      }));
+    } catch (err) {}
+  };
+
+  const [optimisticState, switchOptimisticState] = useOptimistic(
     userState,
-    (state) => ({
-      ...state,
-      following: state.following && false,
-      followingRequestSend:
-        !state.followingRequestSend && !state.followingRequestSend
-          ? true
-          : false,
-    }),
+    (state, value: "follow" | "block") =>
+      value === "follow"
+        ? {
+            ...state,
+            following: state.following && false,
+            followingRequestSend:
+              !state.followingRequestSend && !state.followingRequestSend
+                ? true
+                : false,
+          }
+        : {
+            ...state,
+            blocked: !state.blocked,
+          },
   );
   return (
     <>
       <form action={follow} className="">
         <button className="w-full bg-blue-500 text-white text-sm rounded-md p-2">
-          {optimisticFollow.following
+          {optimisticState.following
             ? "Following"
-            : optimisticFollow.followingRequestSend
+            : optimisticState.followingRequestSend
             ? "Friend Request Send"
             : "Follow"}
         </button>
       </form>
-      <form action="" className="self-end">
-        <span className="flex text-red-400 self-end text-xs cursor-pointer">
-          {optimisticFollow.blocked ? "Unlock User" : "Block User"}
-        </span>
+      <form action={block} className="self-end">
+        <button>
+          <span className="flex text-red-400 self-end text-xs cursor-pointer">
+            {optimisticState.blocked ? "Unlock User" : "Block User"}
+          </span>
+        </button>
       </form>
     </>
   );
 };
 
-
-export default UserInfoCardInteraction; 
+export default UserInfoCardInteraction;

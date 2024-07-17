@@ -56,9 +56,34 @@ export const switchFollow = async (userId: string) => {
 export const switchBlock = async (userId: string) => {
   const { userId: currentUserId } = auth();
 
+  if (!currentUserId) {
+    throw new Error("You must be logged in to follow");
+  }
+
   try {
+    const existingBlock = await prisma.block.findFirst({
+      where: {
+        blockerId: currentUserId,
+        blockedId: userId,
+      },
+    });
+
+    if (existingBlock) {
+      await prisma.block.delete({
+        where: {
+          id: existingBlock.id,
+        },
+      });
+    } else {
+      await prisma.block.create({
+        data: {
+          blockerId: currentUserId,
+          blockedId: userId,
+        },
+      });
+    }
   } catch (err) {
     console.log(err);
-    throw new Error("Something went wrong"); 
+    throw new Error("Something went wrong");
   }
 };
