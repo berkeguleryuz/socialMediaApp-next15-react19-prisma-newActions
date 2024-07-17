@@ -123,4 +123,4 @@ const UserInfoCard = async ({ user }: { user: User }) => {
   );
 };
 
-export default UserInfoCard;
+export default UserInfoCard; 

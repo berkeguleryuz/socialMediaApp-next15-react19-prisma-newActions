@@ -59,6 +59,6 @@ export const switchBlock = async (userId: string) => {
   try {
   } catch (err) {
     console.log(err);
-    throw new Error("Something went wrong");
+    throw new Error("Something went wrong"); 
   }
 };

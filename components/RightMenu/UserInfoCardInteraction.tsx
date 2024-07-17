@@ -70,4 +70,5 @@ const UserInfoCardInteraction = ({
   );
 };
 
-export default UserInfoCardInteraction;
+
+export default UserInfoCardInteraction; 

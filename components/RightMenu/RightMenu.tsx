@@ -16,7 +16,7 @@ const RightMenu = ({ user }: { user?: User }) => {
           </Suspense>
           <Suspense fallback="loading">
             <UserMediaCard user={user} />
-          </Suspense>
+          </Suspense> 
         </div>
       ) : null}
       <FriendRequests />
