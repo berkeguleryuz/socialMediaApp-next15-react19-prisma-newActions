@@ -1,8 +1,24 @@
-import Image from "next/image";
+import prisma from "@/lib/client";
+import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import React from "react";
+import FriendRequestsList from "./FriendRequestsList";
 
-const FriendRequests = () => {
+const FriendRequests = async () => {
+  const { userId } = auth();
+
+  if (!userId) return null;
+
+  const requests = await prisma.followRequest.findMany({
+    where: {
+      receiverId: userId,
+    },
+    include: {
+      sender: true,
+    },
+  });
+
+  if (requests.length === 0) return null;
   return (
     <div className="p-4 bg-white rounded-lg shadow-md text-sm flex flex-col gap-4">
       {/* TOP */}
@@ -13,96 +29,7 @@ const FriendRequests = () => {
         </Link>
       </div>
       {/* USER */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Image
-            src={
-              "https://images.pexels.com/photos/19640282/pexels-photo-19640282/free-photo-of-balade-d-hi-ver.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            }
-            alt=""
-            width={100}
-            height={100}
-            className="w-10 h-10 rounded-full object-cover"
-          />
-          <span className="font-semibold">John Doe</span>
-        </div>
-        <div className="flex gap-3 justify-end flex-1">
-          <Image
-            src={"/accept.png"}
-            alt=""
-            width={20}
-            height={20}
-            className="cursor-pointer"
-          />
-          <Image
-            src={"/reject.png"}
-            alt=""
-            width={20}
-            height={20}
-            className="cursor-pointer"
-          />
-        </div>
-      </div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Image
-            src={
-              "https://images.pexels.com/photos/19640282/pexels-photo-19640282/free-photo-of-balade-d-hi-ver.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            }
-            alt=""
-            width={100}
-            height={100}
-            className="w-10 h-10 rounded-full object-cover"
-          />
-          <span className="font-semibold">John Doe</span>
-        </div>
-        <div className="flex gap-3 justify-end flex-1">
-          <Image
-            src={"/accept.png"}
-            alt=""
-            width={20}
-            height={20}
-            className="cursor-pointer"
-          />
-          <Image
-            src={"/reject.png"}
-            alt=""
-            width={20}
-            height={20}
-            className="cursor-pointer"
-          />
-        </div>
-      </div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Image
-            src={
-              "https://images.pexels.com/photos/19640282/pexels-photo-19640282/free-photo-of-balade-d-hi-ver.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            }
-            alt=""
-            width={100}
-            height={100}
-            className="w-10 h-10 rounded-full object-cover"
-          />
-          <span className="font-semibold">John Doe</span>
-        </div>
-        <div className="flex gap-3 justify-end flex-1">
-          <Image
-            src={"/accept.png"}
-            alt=""
-            width={20}
-            height={20}
-            className="cursor-pointer"
-          />
-          <Image
-            src={"/reject.png"}
-            alt=""
-            width={20}
-            height={20}
-            className="cursor-pointer"
-          />
-        </div>
-      </div>
+      <FriendRequestsList requests={requests} />
     </div>
   );
 };

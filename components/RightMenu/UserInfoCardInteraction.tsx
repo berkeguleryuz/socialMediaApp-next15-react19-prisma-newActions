@@ -65,7 +65,7 @@ const UserInfoCardInteraction = ({
           },
   );
   return (
-    <>
+    <div className="flex flex-col gap-2">
       <form action={follow} className="">
         <button className="w-full bg-blue-500 text-white text-sm rounded-md p-2">
           {optimisticState.following
@@ -76,13 +76,13 @@ const UserInfoCardInteraction = ({
         </button>
       </form>
       <form action={block} className="self-end">
-        <button>
+        <button className="flex self-end">
           <span className="flex text-red-400 self-end text-xs cursor-pointer">
             {optimisticState.blocked ? "Unlock User" : "Block User"}
           </span>
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
