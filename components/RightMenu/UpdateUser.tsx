@@ -5,6 +5,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useActionState, useState } from "react";
+import UpdateButton from "@/components/RightMenu/UpdateButton";
 
 const UpdateUser = ({ user }: { user: User }) => {
   const [open, setOpen] = useState(false);
@@ -20,6 +21,14 @@ const UpdateUser = ({ user }: { user: User }) => {
   const handleClose = () => {
     setOpen(false);
     state.success && router.refresh();
+  };
+
+  const [work, setWork] = useState("");
+
+  const handleInput = (e: any) => {
+    const value = e.target.value;
+    const sanitizedValue = value.replace(/[^a-zA-Z]/g, "");
+    setWork(sanitizedValue);
   };
 
   return (
@@ -80,6 +89,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                   className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   placeholder={user.name || "John"}
                   name="name"
+                  onInput={handleInput}
                 />
               </div>
             </div>
@@ -93,6 +103,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                 placeholder={user.surname || "Doe"}
                 name="surname"
+                onInput={handleInput}
               />
             </div>
             {/* INPUT */}
@@ -105,6 +116,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                 placeholder={user.description || "Life is beatiful..."}
                 name="description"
+                onInput={handleInput}
               />
             </div>
             {/* INPUT */}
@@ -117,6 +129,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                 placeholder={user.city || "Berlin"}
                 name="city"
+                onInput={handleInput}
               />
             </div>
             {/* INPUT */}
@@ -130,6 +143,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                   className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   placeholder={user.school || "Berkeley"}
                   name="school"
+                  onInput={handleInput}
                 />
               </div>
             </div>
@@ -143,6 +157,7 @@ const UpdateUser = ({ user }: { user: User }) => {
                 className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                 placeholder={user.work || "Apple"}
                 name="work"
+                onInput={handleInput}
               />
             </div>
             {/* INPUT */}
@@ -155,11 +170,10 @@ const UpdateUser = ({ user }: { user: User }) => {
                 className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                 placeholder={user.website || "clodron.com"}
                 name="website"
+                onInput={handleInput}
               />
             </div>
-            <button className="bg-blue-500 p-2 mt-2 rounded-md text-white">
-              Update
-            </button>
+            <UpdateButton />
             {state.success && (
               <span className="text-green-500">Profile has been updated!</span>
             )}
