@@ -88,90 +88,90 @@ const UpdateUser = ({ user }: { user: User }) => {
                   type="text"
                   className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
                   placeholder={user.name || "John"}
-                  name="name"
                   onInput={handleInput}
+                  name="name"
                 />
               </div>
-            </div>
-            {/* INPUT */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="" className="text-xs text-gray-500">
-                Surname
-              </label>
-              <input
-                type="text"
-                className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
-                placeholder={user.surname || "Doe"}
-                name="surname"
-                onInput={handleInput}
-              />
-            </div>
-            {/* INPUT */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="" className="text-xs text-gray-500">
-                Description
-              </label>
-              <input
-                type="text"
-                className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
-                placeholder={user.description || "Life is beatiful..."}
-                name="description"
-                onInput={handleInput}
-              />
-            </div>
-            {/* INPUT */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="" className="text-xs text-gray-500">
-                City
-              </label>
-              <input
-                type="text"
-                className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
-                placeholder={user.city || "Berlin"}
-                name="city"
-                onInput={handleInput}
-              />
-            </div>
-            {/* INPUT */}
-            <div className="flex flex-wrap justify-between gap-2 xl:gap-4">
+              {/* INPUT */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="" className="text-xs text-gray-500">
-                  School
+                  Surname
                 </label>
                 <input
                   type="text"
                   className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
-                  placeholder={user.school || "Berkeley"}
-                  name="school"
+                  placeholder={user.surname || "Doe"}
+                  name="surname"
                   onInput={handleInput}
                 />
               </div>
-            </div>
-            {/* INPUT */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="" className="text-xs text-gray-500">
-                Work
-              </label>
-              <input
-                type="text"
-                className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
-                placeholder={user.work || "Apple"}
-                name="work"
-                onInput={handleInput}
-              />
-            </div>
-            {/* INPUT */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="" className="text-xs text-gray-500">
-                Website
-              </label>
-              <input
-                type="text"
-                className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
-                placeholder={user.website || "clodron.com"}
-                name="website"
-                onInput={handleInput}
-              />
+              {/* INPUT */}
+              <div className="flex flex-col gap-2">
+                <label htmlFor="" className="text-xs text-gray-500">
+                  Description
+                </label>
+                <input
+                  type="text"
+                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  placeholder={user.description || "Life is beatiful..."}
+                  name="description"
+                  onInput={handleInput}
+                />
+              </div>
+              {/* INPUT */}
+              <div className="flex flex-col gap-2">
+                <label htmlFor="" className="text-xs text-gray-500">
+                  City
+                </label>
+                <input
+                  type="text"
+                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  placeholder={user.city || "Berlin"}
+                  name="city"
+                  onInput={handleInput}
+                />
+              </div>
+              {/* INPUT */}
+              <div className="flex flex-wrap justify-between gap-2 xl:gap-4">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="" className="text-xs text-gray-500">
+                    School
+                  </label>
+                  <input
+                    type="text"
+                    className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                    placeholder={user.school || "Berkeley"}
+                    name="school"
+                    onInput={handleInput}
+                  />
+                </div>
+              </div>
+              {/* INPUT */}
+              <div className="flex flex-col gap-2">
+                <label htmlFor="" className="text-xs text-gray-500">
+                  Work
+                </label>
+                <input
+                  type="text"
+                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  placeholder={user.work || "Apple"}
+                  name="work"
+                  onInput={handleInput}
+                />
+              </div>
+              {/* INPUT */}
+              <div className="flex flex-col gap-2">
+                <label htmlFor="" className="text-xs text-gray-500">
+                  Website
+                </label>
+                <input
+                  type="text"
+                  className="ring-1 ring-gray-300 p-[13px] rounded-md text-sm"
+                  placeholder={user.website || "clodron.com"}
+                  name="website"
+                  onInput={handleInput}
+                />
+              </div>
             </div>
             <UpdateButton />
             {state.success && (
