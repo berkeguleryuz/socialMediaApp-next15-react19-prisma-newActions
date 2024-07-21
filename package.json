@@ -7,7 +7,7 @@
     "build": "next build --force",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "npm i --force --no-audit prisma generate"
+    "postinstall": "npm install --legacy-peer-deps && prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.3",
