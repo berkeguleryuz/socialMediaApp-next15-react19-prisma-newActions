@@ -80,7 +80,7 @@ const StoryList = ({
                   height={100}
                   className="w-20 h-20 ring-2 object-cover rounded-full"
                 />
-                <div className="absolute text-6xl text-gray-200 top-1 right-5">+</div>
+                {img ? null : <div className="absolute text-6xl text-gray-200 top-1 right-5">+</div>}
               </div>
               {img ? (
                 <form action={add}>
@@ -91,7 +91,7 @@ const StoryList = ({
               ) : (
                 <span className="font-medium">Add a Story</span>
               )}
-              <div className="absolute text-6xl text-gray-200 top-1">+</div>
+              <div className="absolute text-6xl text-gray-200 top-1"></div>
             </div>
           );
         }}
