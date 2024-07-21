@@ -59,7 +59,7 @@ const ProfilePage = async ({ params }: { params: { username: string } }) => {
             <div className="w-full h-64 relative">
               <Image
                 src={user.cover || "/noCover.png"}
-                alt=""
+                alt="cover"
                 fill
                 className="object-cover rounded-md "
               />
