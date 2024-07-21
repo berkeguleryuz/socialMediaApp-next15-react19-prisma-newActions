@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
+    "postinstall": "npm install --force && prisma generate",
     "build": "next build --force",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "npm install --force && prisma generate"
+    "lint": "next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.3",
