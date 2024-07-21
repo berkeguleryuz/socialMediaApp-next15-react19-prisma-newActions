@@ -4,6 +4,8 @@ import React, { useState } from "react";
 
 import { useUser } from "@clerk/nextjs";
 import { CldUploadWidget } from "next-cloudinary";
+import AddPostButton from "./AddPostButton";
+import { addPost } from "@/lib/actions";
 
 const AddPost = () => {
   const { user, isLoaded } = useUser();
@@ -27,21 +29,25 @@ const AddPost = () => {
       {/* POST */}
       <div className="flex-1">
         {/* Text input */}
-        <form action="" className="flex gap-4">
+        <form
+          action={(formData) => addPost(formData, img?.secure_url || "")}
+          className="flex gap-4">
           <textarea
             placeholder="What's on your mind?"
             className="bg-slate-100 rounded-lg flex-1 p-2"
             name="desc"
             onChange={(e) => setDesc(e.target.value)}
           />
-          <Image
-            src={"/emoji.png"}
-            alt="logo"
-            width={25}
-            height={25}
-            className="h-5 w-5 cursor-pointer self-end"
-          />
-          <button>Send</button>
+          <div>
+            <Image
+              src={"/emoji.png"}
+              alt="logo"
+              width={25}
+              height={25}
+              className="h-5 w-5 cursor-pointer self-end"
+            />
+            <AddPostButton />
+          </div>
         </form>
         {/* Post options */}
         <div className="flex items-center gap-4 mt-4 text-gray-400 flex-wrap">
