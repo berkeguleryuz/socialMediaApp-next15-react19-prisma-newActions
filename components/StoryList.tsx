@@ -71,15 +71,17 @@ const StoryList = ({
         }}>
         {({ open }) => {
           return (
-            <div className="flex flex-col items-center gap-2 cursor-pointer relative">
-              <Image
-                src={img?.secure_url || user?.imageUrl || "/noAvatar.png"}
-                alt="story"
-                width={100}
-                height={100}
-                className="w-20 h-20 ring-2 object-cover rounded-full"
-                onClick={() => open()}
-              />
+            <div className="flex flex-col items-center gap-2 ">
+              <div onClick={() => open()} className="cursor-pointer relative">
+                <Image
+                  src={img?.secure_url || user?.imageUrl || "/noAvatar.png"}
+                  alt="story"
+                  width={100}
+                  height={100}
+                  className="w-20 h-20 ring-2 object-cover rounded-full"
+                />
+                <div className="absolute text-6xl text-gray-200 top-1 right-5">+</div>
+              </div>
               {img ? (
                 <form action={add}>
                   <button className="text-xs bg-blue-500 p-1 rounded-md text-white">
