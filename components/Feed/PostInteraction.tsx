@@ -81,7 +81,7 @@ const PostInteraction = ({
         <div className="flex items-center gap-4 bg-slate-50 p-2 rounded-xl">
           <Image
             src={"/share.png"}
-            alt=""
+            alt="share"
             width={16}
             height={16}
             className="cursor-pointer"
