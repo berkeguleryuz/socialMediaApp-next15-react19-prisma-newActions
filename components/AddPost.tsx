@@ -1,36 +1,24 @@
+"use client";
 import Image from "next/image";
-import React from "react";
-import prisma from "../lib/client";
-import { auth } from "@clerk/nextjs/server";
+import React, { useState } from "react";
+
+import { useUser } from "@clerk/nextjs";
+import { CldUploadWidget } from "next-cloudinary";
 
 const AddPost = () => {
-  const { userId } = auth();
-  // console.log(userId);
+  const { user, isLoaded } = useUser();
+  const [desc, setDesc] = useState("");
+  const [img, setImg] = useState<any>();
 
-  // const testAction = async (formData: FormData) => {
-  //   "use server";
+  if (!isLoaded) {
+    return "Loading";
+  }
 
-  //   if (!userId) return;
-  //   const desc = formData.get("desc") as string;
-  //   try {
-  //     const response = await prisma.post.create({
-  //       data: {
-  //         userId: userId,
-  //         desc: desc,
-  //       },
-  //     });
-  //     console.log(response);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
   return (
     <div className="p-4 shadow-md bg-white rounded-lg flex gap-4 justify-between text-sm">
       {/* AVATAR */}
       <Image
-        src={
-          "https://images.pexels.com/photos/27057427/pexels-photo-27057427/free-photo-of-kent-sehir-insanlar-sanat.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        }
+        src={user?.imageUrl || "/noAvatar.png"}
         alt="logo"
         width={100}
         height={100}
@@ -44,6 +32,7 @@ const AddPost = () => {
             placeholder="What's on your mind?"
             className="bg-slate-100 rounded-lg flex-1 p-2"
             name="desc"
+            onChange={(e) => setDesc(e.target.value)}
           />
           <Image
             src={"/emoji.png"}
@@ -56,16 +45,30 @@ const AddPost = () => {
         </form>
         {/* Post options */}
         <div className="flex items-center gap-4 mt-4 text-gray-400 flex-wrap">
-          <div className="flex items-center gap-2 cursor-pointer">
-            <Image
-              src={"/addimage.png"}
-              alt="logo"
-              width={25}
-              height={25}
-              className="h-5 w-5 cursor-pointer self-end"
-            />
-            Photo
-          </div>
+          <CldUploadWidget
+            uploadPreset="social"
+            onSuccess={(result, { widget }) => {
+              setImg(result.info);
+              widget.close();
+            }}>
+            {({ open }) => {
+              return (
+                <div
+                  className="flex items-center gap-2 cursor-pointer"
+                  onClick={() => open()}>
+                  <Image
+                    src={"/addimage.png"}
+                    alt="logo"
+                    width={25}
+                    height={25}
+                    className="h-5 w-5 cursor-pointer self-end"
+                  />
+                  Photo
+                </div>
+              );
+            }}
+          </CldUploadWidget>
+
           <div className="flex items-center gap-2 cursor-pointer">
             <Image
               src={"/addVideo.png"}

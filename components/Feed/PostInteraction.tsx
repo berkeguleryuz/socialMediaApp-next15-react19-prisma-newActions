@@ -73,7 +73,7 @@ const PostInteraction = ({
           />
           <span className="texy-gray-300">|</span>
           <span className="texy-gray-500">
-            621 <span className="hidden md:inline">Comments</span>
+            {commentNumber} <span className="hidden md:inline">Comments</span>
           </span>
         </div>
       </div>
